@@ -1,0 +1,14 @@
+{
+    "name": "notion-js-poc",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Minimal Notion database CRUD proof of concept using native Node.js fetch",
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "start": "node --env-file=.env src/cli.js",
+        "test": "node --test"
+    }
+}
