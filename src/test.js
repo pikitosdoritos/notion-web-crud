@@ -21,6 +21,10 @@ async function main() {
     // update
     const result = await notion.update(created.id, 'updated)', 'In progress', new Date)
     console.log(result)
+
+    // delete
+    const deleted = await notion.delete(created.id)
+    console.log(deleted)
 }
 
 main()

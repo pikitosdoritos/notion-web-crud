@@ -80,25 +80,19 @@ export class Notion {
         return Notion.extract((await response.json()).properties)
 
     }
+
+    async delete(createdID) {
+        const response = await fetch(`https://api.notion.com/v1/pages/${createdID}`,
+            {
+                method: "PATCH",
+                headers: this.headers,
+                body: JSON.stringify({
+                    in_trash: true
+                })
+
+            }
+        )
+
+        return Notion.extract(await response.json().properties)
+    }
 }
-
-// async request(method, path, body) {
-//     const response = await this.fetcher(
-//         `https://api.notion.com/v1${path}`, {
-//         method,
-//         headers: {
-//             Authorization: `Bearer ${this.token}`,
-//             'Notion-Version': '2026-03-11',
-//             'Content-Type': 'application/json',
-//         },
-//         ...(body)
-//     }
-//     )
-// }
-
-// async connect(databaseID) {
-//     const database = await this.request('GET', `/databases/${databaseID}`)
-//     const sources = database.data_sources ?? []
-
-//     return sources
-// }
